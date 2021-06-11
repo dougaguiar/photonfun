@@ -1,0 +1,44 @@
+{% extends 'scorekeeper/base.html' %}
+{% block content %}
+    {% for match in matches %}
+
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{match.referee}}</a>
+              <small class="text-muted">{{match.match_datetime}}</small>
+            </div>
+            <h2>Game number: <a class="article-title" href="#">{{ match.id}}</a></h2>
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Player</th>
+                      <th scope="col">Points</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% if match.outcome_a == 'W' %}
+                    <tr class="table-success">
+                    {% else %}
+                    <tr class="table-danger">
+                    {% endif %}
+                      <th scope="row">{{match.outcome_a}}</th>
+                      <td>{{match.player_a}}</td>
+                      <td>{{match.points_a}}</td>
+                    </tr>
+                    {% if match.outcome_b == 'W' %}
+                    <tr class="table-success">
+                    {% else %}
+                    <tr class="table-danger">
+                    {% endif %}
+                      <th scope="row">{{match.outcome_b}}</th>
+                      <td>{{match.player_b}}</td>
+                      <td>{{match.points_b}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
