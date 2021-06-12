@@ -14,34 +14,40 @@
         {% endif %}
         <h2 class="article-title" >{{ object.id}}</h2>
           <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Player</th>
-                  <th scope="col">Points</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% if object.outcome_a == 'W' %}
-                <tr class="table-success">
-                {% else %}
-                <tr class="table-danger">
-                {% endif %}
-                  <th scope="row">{{object.outcome_a}}</th>
-                  <td><a class="mr-2" href="{% url 'player-matches' match.player_a.username %}">{{match.player_a}}</a></td>
-                  <td>{{object.points_a}}</td>
-                </tr>
-                {% if object.outcome_b == 'W' %}
-                <tr class="table-success">
-                {% else %}
-                <tr class="table-danger">
-                {% endif %}
-                  <th scope="row">{{object.outcome_b}}</th>
-                  <td><a class="mr-2" href="{% url 'player-matches' match.player_b.username %}">{{match.player_b}}</a></td>
-                  <td>{{object.points_b}}</td>
-                </tr>
-              </tbody>
-            </table>
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Player</th>
+                      <th scope="col">Points on Match</th>
+                      <th scope="col">Ranking Points</th>
+                      <th scope="col">Ranking Change</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% if object.outcome_a == 'W' %}
+                    <tr class="table-success">
+                    {% else %}
+                    <tr class="table-danger">
+                    {% endif %}
+                      <th scope="row">{{object.outcome_a}}</th>
+                      <td><a class="mr-2" href="{% url 'player-matches' match.player_a.username %}">{{object.player_a}}</a></td>
+                      <td>{{ object.points_a }}</td>
+                      <td>{{ object.player_a.profile.single_points }}</td>
+                      <td>{{ object.player_a_increment }}</td>
+                    </tr>
+                    {% if object.outcome_b == 'W' %}
+                    <tr class="table-success">
+                    {% else %}
+                    <tr class="table-danger">
+                    {% endif %}
+                      <th scope="row">{{object.outcome_b}}</th>
+                      <td><a class="mr-2" href="{% url 'player-matches' match.player_b.username %}">{{object.player_b}}</a></td>
+                      <td>{{object.points_b}}</td>
+                      <td>{{object.player_b.profile.single_points}}</td>
+                      <td>{{object.player_b_increment}}</td>
+                    </tr>
+                  </tbody>
+                </table>
       </div>
     </article>
 {% endblock content %}

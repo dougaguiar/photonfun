@@ -14,7 +14,9 @@
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Player</th>
-                      <th scope="col">Points</th>
+                      <th scope="col">Points on Match</th>
+                      <th scope="col">Ranking Points</th>
+                      <th scope="col">Ranking Change</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -25,7 +27,9 @@
                     {% endif %}
                       <th scope="row">{{match.outcome_a}}</th>
                       <td><a class="mr-2" href="{% url 'player-matches' match.player_a.username %}">{{match.player_a}}</a></td>
-                      <td>{{match.points_a}}</td>
+                      <td>{{ match.points_a }}</td>
+                      <td>{{ match.player_a.profile.single_points }}</td>
+                      <td>{{ match.player_a_increment }}</td>
                     </tr>
                     {% if match.outcome_b == 'W' %}
                     <tr class="table-success">
@@ -35,6 +39,8 @@
                       <th scope="row">{{match.outcome_b}}</th>
                       <td><a class="mr-2" href="{% url 'player-matches' match.player_b.username %}">{{match.player_b}}</a></td>
                       <td>{{match.points_b}}</td>
+                      <td>{{match.player_b.profile.single_points}}</td>
+                      <td>{{match.player_b_increment}}</td>
                     </tr>
                   </tbody>
                 </table>

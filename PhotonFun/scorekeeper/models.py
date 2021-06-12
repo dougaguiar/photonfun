@@ -19,8 +19,15 @@ class Match(models.Model):
     outcome_a = models.CharField(max_length=2, choices=OUTCOMES)
     outcome_b = models.CharField(max_length=2, choices=OUTCOMES)
 
-    player_a_increment = models.FloatField(default=0,blank=True)
-    player_b_increment = models.FloatField(default=0,blank=True)
+    player_a_increment = models.DecimalField(default=0,
+                                             blank=True,
+                                             max_digits=5,
+                                             decimal_places=2)
+    player_b_increment = models.DecimalField(default=0,
+                                             blank=True,
+                                             max_digits=5,
+                                             decimal_places=2)
+
 
     class Meta:
         ordering = ['match_datetime']

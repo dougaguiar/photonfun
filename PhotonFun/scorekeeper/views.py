@@ -45,8 +45,7 @@ class MatchDetailView(DetailView):
 
 class MatchCreateView(LoginRequiredMixin, CreateView):
     model = Match
-    fields = ['referee',
-              'player_a',
+    fields = ['player_a',
               'player_b',
               'points_a',
               'points_b',

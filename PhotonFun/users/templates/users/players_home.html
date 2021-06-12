@@ -1,0 +1,10 @@
+{% extends 'scorekeeper/base.html' %}
+{% load render_table from django_tables2 %}
+{% block content %}
+        <article class="media content-section">
+          <div class="media-body">
+            <h2>Players</h2>
+              {% render_table table %}
+          </div>
+        </article>
+{% endblock content %}
