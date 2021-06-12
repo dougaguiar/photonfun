@@ -1,4 +1,4 @@
-# photonfun
+# PhotonFun
 Scorekeeping web app
 
 Initially tought to keep PingPong scores and organize a Ranking of the players
