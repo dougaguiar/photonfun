@@ -19,8 +19,14 @@ class Match(models.Model):
     outcome_a = models.CharField(max_length=2, choices=OUTCOMES)
     outcome_b = models.CharField(max_length=2, choices=OUTCOMES)
 
+    player_a_increment = models.FloatField(default=0,blank=True)
+    player_b_increment = models.FloatField(default=0,blank=True)
+
     class Meta:
         ordering = ['match_datetime']
 
     def get_absolute_url(self):
         return reverse('match-detail', kwargs={'pk': self.pk})
+
+    def __str__(self):
+        return f'Match {self.id}'
