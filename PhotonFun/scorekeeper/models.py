@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Match(models.Model):
@@ -20,3 +21,6 @@ class Match(models.Model):
 
     class Meta:
         ordering = ['match_datetime']
+
+    def get_absolute_url(self):
+        return reverse('match-detail', kwargs={'pk': self.pk})
